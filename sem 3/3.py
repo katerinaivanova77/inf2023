@@ -1,15 +1,12 @@
-a = int(input())
-b = int(input())
-a1 = a
-b1 = b
-while a1 != 0 and b1 != 0:
-    if a1>b1:
-        a1 = a1 % b1
-    else:
-        b1 = b1 % a1
-d = a1 + b1
-for x in range(-500,500):
-    for y in range(-500,500):
-        if a*x + b*y == d:
-            print(x, y)
-print(d)
+import matplotlib.pyplot as plt
+import numpy as np
+
+a = 1
+b = 2
+fig, axes = plt.subplots(2, 2, figsize=(6, 6))
+n_points = [50, 500, 5000, 50000]
+for i, ax in enumerate(axes.flatten()):
+    x = np.random.normal(a, b, n_points[i])
+    ax.hist(x, bins=40, density=True)
+    ax.set_title(f"n = {n_points[i]}")
+plt.show()
